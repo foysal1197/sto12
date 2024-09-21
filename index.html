@@ -1,58 +1,415 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>sto-poc-by-mathsuke</title>
-  <h1>subdomain takeover poc by mathsuke</h1>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      padding: 40px;
-    }
-    .login-container {
-      max-width: 400px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .login-container h2 {
-      text-align: center;
-    }
-    .login-container input[type="text"],
-    .login-container input[type="password"],
-    .login-container input[type="submit"] {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-    .login-container input[type="submit"] {
-      background-color: #4caf50;
-      color: white;
-      cursor: pointer;
-    }
-    .login-container input[type="submit"]:hover {
-      background-color: #45a049;
-    }
-  </style>
+    
+
+
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<meta name="application-name" content="JIRA" data-name="jira" data-version="6.4.14"><meta name="ajs-dev-mode" content="false">
+<meta name="ajs-context-path" content="">
+<meta name="ajs-version-number" content="6.4.14">
+<meta name="ajs-build-number" content="64029">
+<meta name="ajs-is-beta" content="false">
+<meta name="ajs-is-rc" content="false">
+<meta name="ajs-is-snapshot" content="false">
+<meta name="ajs-is-milestone" content="false">
+<meta name="ajs-remote-user" content="">
+<meta name="ajs-remote-user-fullname" content="">
+<meta name="ajs-user-locale" content="en_GB">
+<meta name="ajs-user-locale-group-separator" content=",">
+<meta name="ajs-app-title" content="ION Trading Issue Management">
+<meta name="ajs-keyboard-shortcuts-enabled" content="true">
+<meta name="ajs-keyboard-accesskey-modifier" content="Alt+Shift">
+<meta name="ajs-enabled-dark-features" content="[&quot;com.atlassian.jira.projects.issuenavigator&quot;,&quot;jira.onboarding.feature.disabled&quot;,&quot;jira.plugins.dnd.attachment&quot;,&quot;com.atlassian.jira.projects.ProjectCentricNavigation.Switch&quot;,&quot;jira.plugin.devstatus.phasetwo.enabled&quot;,&quot;com.atlassian.jira.config.PDL&quot;,&quot;jira.frother.reporter.field&quot;,&quot;jira.plugin.devstatus.phasetwo&quot;,&quot;com.atlassian.jira.darkfeature.CommonHeader&quot;,&quot;app-switcher.new&quot;,&quot;frother.assignee.field&quot;,&quot;jira.issue.status.lozenge&quot;]">
+<meta name="ajs-date-relativize" content="false">
+<meta name="ajs-date-time" content="h:mm a">
+<meta name="ajs-date-day" content="EEEE h:mm a">
+<meta name="ajs-date-dmy" content="dd/MMM/yy">
+<meta name="ajs-date-complete" content="dd/MMM/yy h:mm a">
+<meta name="ajs-in-admin-mode" content="false">
+<meta name="ajs-is-sysadmin" content="false">
+<meta name="ajs-is-admin" content="false">
+<meta name="ajs-outgoing-mail-enabled" content="true">
+<meta name="stp-license-product-name" content="JIRA"/> <meta name="stp-license-days-to-expiry" content="-508"/> <meta name="stp-license-is-admin" content="false"/> <meta name="stp-license-should-keep-banner-hidden" content="false"/><script type="text/javascript">var AJS=AJS||{};AJS.debug=true;</script>
+
+
+    
+<meta id="atlassian-token" name="atlassian-token" content="B38L-JCHW-RFHO-HS7P|b29581319f197becf6ede431dd933c0c304ca29d|lout">
+
+
+
+<link rel="shortcut icon" href="/s/en_GB-61we5k/64029/81/_/favicon.ico">
+
+
+    
+
+
+<!--[if IE]><![endif]-->
+<script type="text/javascript">var contextPath = '';</script>
+<script>
+window.WRM=window.WRM||{};window.WRM._unparsedData=window.WRM._unparsedData||{};
+WRM._unparsedData["com.atlassian.plugins.atlassian-plugins-webresource-plugin:context-path.context-path"]="\"\"";
+WRM._unparsedData["jira.webresources:dateFormatProvider.dateFormat"]="{\"meridiem\":[\"AM\",\"PM\"],\"eras\":[\"BC\",\"AD\"],\"months\":[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\",\"August\",\"September\",\"October\",\"November\",\"December\"],\"monthsShort\":[\"Jan\",\"Feb\",\"Mar\",\"Apr\",\"May\",\"Jun\",\"Jul\",\"Aug\",\"Sep\",\"Oct\",\"Nov\",\"Dec\"],\"weekdaysShort\":[\"Sun\",\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\",\"Sat\"],\"weekdays\":[\"Sunday\",\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\"]}";
+WRM._unparsedData["com.atlassian.jira.jira-header-plugin:dismissedFlags.flags"]="{\"dismissed\":[]}";
+WRM._unparsedData["com.atlassian.jira.jira-header-plugin:newsletter-signup-tip.newsletterSignup"]="{\"formUrl\":\"https://www.atlassian.com/apis/exact-target/{0}/subscribe?mailingListId=1239131\",\"showNewsletterTip\":false}";
+WRM._unparsedData["com.atlassian.jira.plugins.greenhopper-marketing-plugin:gh-advertising-resources.urls"]="{\"hamlet\":\"https://hamlet.atlassian.com/\",\"lasso\":\"https://id.atlassian.com/\",\"mac\":\"https://my.atlassian.com\"}";
+WRM._unparsedData["com.atlassian.jira.plugins.jira-admin-helper-plugin:notification-event-provider.notification-event-data"]="[{\"id\":1,\"name\":\"Issue Created\",\"isDefault\":true},{\"id\":2,\"name\":\"Issue Updated\"},{\"id\":3,\"name\":\"Issue Assigned\"},{\"id\":4,\"name\":\"Issue Resolved\"},{\"id\":5,\"name\":\"Issue Closed\"},{\"id\":6,\"name\":\"Issue Commented\"},{\"id\":14,\"name\":\"Issue Comment Edited\"},{\"id\":17,\"name\":\"Issue Comment Deleted\"},{\"id\":7,\"name\":\"Issue Reopened\"},{\"id\":8,\"name\":\"Issue Deleted\"},{\"id\":9,\"name\":\"Issue Moved\"},{\"id\":10,\"name\":\"Work Logged On Issue\"},{\"id\":11,\"name\":\"Work Started On Issue\"},{\"id\":12,\"name\":\"Work Stopped On Issue\"},{\"id\":15,\"name\":\"Issue Worklog Updated\"},{\"id\":16,\"name\":\"Issue Worklog Deleted\"},{\"id\":13,\"name\":\"Generic Event\"}]";
+WRM._unparsedData["com.atlassian.jira.plugins.jira-admin-helper-plugin:permissions-provider.permissions-data"]="[{\"permissions\":[{\"name\":\"Administer Projects\",\"id\":\"23\"},{\"name\":\"Browse Projects\",\"id\":\"10\"},{\"name\":\"View Development Tools\",\"id\":\"29\"},{\"name\":\"View Read-Only Workflow\",\"id\":\"45\"}],\"name\":\"Project Permissions\"},{\"permissions\":[{\"name\":\"Create Issues\",\"id\":\"11\"},{\"name\":\"Edit Issues\",\"id\":\"12\"},{\"name\":\"Transition Issues\",\"id\":\"46\"},{\"name\":\"Schedule Issues\",\"id\":\"28\"},{\"name\":\"Move Issues\",\"id\":\"25\"},{\"name\":\"Assign Issues\",\"id\":\"13\"},{\"name\":\"Assignable User\",\"id\":\"17\"},{\"name\":\"Resolve Issues\",\"id\":\"14\"},{\"name\":\"Close Issues\",\"id\":\"18\"},{\"name\":\"Modify Reporter\",\"id\":\"30\"},{\"name\":\"Delete Issues\",\"id\":\"16\"},{\"name\":\"Link Issues\",\"id\":\"21\"},{\"name\":\"Set Issue Security\",\"id\":\"26\"}],\"name\":\"Issue Permissions\"},{\"permissions\":[{\"name\":\"View Voters and Watchers\",\"id\":\"31\"},{\"name\":\"Manage Watchers\",\"id\":\"32\"}],\"name\":\"Voters & Watchers Permissions\"},{\"permissions\":[{\"name\":\"Add Comments\",\"id\":\"15\"},{\"name\":\"Edit All Comments\",\"id\":\"34\"},{\"name\":\"Edit Own Comments\",\"id\":\"35\"},{\"name\":\"Delete All Comments\",\"id\":\"36\"},{\"name\":\"Delete Own Comments\",\"id\":\"37\"}],\"name\":\"Comments Permissions\"},{\"permissions\":[{\"name\":\"Create Attachments\",\"id\":\"19\"},{\"name\":\"Delete All Attachments\",\"id\":\"38\"},{\"name\":\"Delete Own Attachments\",\"id\":\"39\"}],\"name\":\"Attachments Permissions\"},{\"permissions\":[{\"name\":\"Work On Issues\",\"id\":\"20\"},{\"name\":\"Edit Own Worklogs\",\"id\":\"40\"},{\"name\":\"Edit All Worklogs\",\"id\":\"41\"},{\"name\":\"Delete Own Worklogs\",\"id\":\"42\"},{\"name\":\"Delete All Worklogs\",\"id\":\"43\"}],\"name\":\"Time Tracking Permissions\"}]";
+WRM._unparsedData["com.atlassian.jira.plugins.jira-dnd-attachment-plugin:drag-and-drop-attachment-javascript.upload-limit"]="\"52428800\"";
+WRM._unparsedData["com.atlassian.plugins.browser.metrics.browser-metrics-plugin:browser-metrics.feature-data-provider-legacy"]="true";
+WRM._unparsedData["com.atlassian.plugins.helptips.jira-help-tips:common.JiraHelpTipData"]="{\"anonymous\":true}";
+WRM._unparsedData["com.atlassian.plugins.jira-html5-attach-images:jira-html5-attach-images-resources.resource-uris"]="{\"deployJava.html\":\"/s/en_GB-61we5k/64029/81/1.5.27/_/download/resources/com.atlassian.plugins.jira-html5-attach-images:jira-html5-attach-images-resources/deployJava.html\",\"clipboard.jar\":\"/s/en_GB-61we5k/64029/81/1.5.27/_/download/resources/com.atlassian.plugins.jira-html5-attach-images:jira-html5-attach-images-resources/clipboard.jar\",\"clipboard-legacy.jar\":\"/s/en_GB-61we5k/64029/81/1.5.27/_/download/resources/com.atlassian.plugins.jira-html5-attach-images:jira-html5-attach-images-resources/clipboard-legacy.jar\"}";
+WRM._unparsedData["com.onresolve.jira.groovy.groovyrunner:web-item-response-renderer.web-item-actions-data-provider"]="[]";
+WRM._unparsedData["dashboardInfoMessage"]="\"\"";
+WRM._unparsedData["dashboardInstallMessage"]="null";
+</script>
+<link type="text/css" rel="stylesheet" href="/s/5240a83e1f9b55bcbdba53aa49bb7f4f-CDN/en_GB-61we5k/64029/81/46/_/download/superbatch/css/batch.css" media="all">
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/34a9f15ea937711dd63f41fdef4b1f4a-CDN/en_GB-61we5k/64029/81/46/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/s/7d9e686e71293c28720834c65269e698-CDN/en_GB-61we5k/64029/81/d2b13602104388f520862c21fb980866/_/download/contextbatch/css/atl.dashboard,atl.general,jira.global,jira.general/batch.css?agile_global_admin_condition=true&amp;jag=true&amp;jag_disabled_marketing=true" media="all">
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/en_GB-61we5k/64029/81/d2b13602104388f520862c21fb980866/_/download/contextbatch/css/atl.dashboard,atl.general,jira.global,jira.general/batch.css?ieonly=true" media="all">
+<![endif]-->
+<script type="text/javascript" src="/s/4f8ade0aa9af3a5eb8b3c975e474cc54-CDN/en_GB-61we5k/64029/81/46/_/download/superbatch/js/batch.js?locale=en-GB" ></script>
+<script type="text/javascript" src="/s/5b4b60676ee4728f36970407f4c41f46-CDN/en_GB-61we5k/64029/81/d2b13602104388f520862c21fb980866/_/download/contextbatch/js/atl.dashboard,atl.general,jira.global,jira.general/batch.js?agile_global_admin_condition=true&amp;jag=true&amp;jag_disabled_marketing=true&amp;locale=en-GB&amp;jaguser=true" ></script>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/en_GB-61we5k/64029/81/d2b13602104388f520862c21fb980866/_/download/contextbatch/js/atl.dashboard,atl.general,jira.global,jira.general/batch.js?content-type=text%2Fjavascript%3B+charset%3DUTF-8" ></script>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/en_GB-61we5k/64029/81/c5906e600f042c9dfd9db2e13bac0ebd/_/download/contextbatch/js/jira.dashboard/batch.js" ></script>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/en_GB-61we5k/64029/81/1.0/_/download/batch/jira.webresources:calendar-en/jira.webresources:calendar-en.js" ></script>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/en_GB-61we5k/64029/81/1.0/_/download/batch/jira.webresources:calendar-localisation-moment/jira.webresources:calendar-localisation-moment.js" ></script>
+
+<script type="text/javascript" src="/rest/api/1.0/shortcuts/64029/353d7a29df23e9f5d744a8884d8e33f2/shortcuts.js"></script>
+<meta name="stp-license-product-name" content="JIRA"/> <meta name="stp-license-days-to-expiry" content="-508"/> <meta name="stp-license-is-admin" content="false"/> <meta name="stp-license-should-keep-banner-hidden" content="false"/>
+
+
+    
+    
+
+    
+
+
+
+
+
+
+
+<title>System Dashboard - ION Trading Issue Management</title>
+<link rel="search" type="application/opensearchdescription+xml" href="/osd.jsp" title="System Dashboard - ION Trading Issue Management"/>
+
+
 </head>
-<body>
-  <div class="login-container">
-    <h2>Login to armors.io</h2>
-    <form action="/login" method="post">
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
-      <input type="submit" value="Login">
+
+
+
+<body id="jira" class="aui-layout aui-theme-default page-type-dashboard" data-version="6.4.14">
+<div id="page">
+    <header id="header" role="banner">
+        
+    
+        
+            
+        
+    
+
+
+
+
+
+<script>
+    AJS.$(function () {
+        var licenseBanner = require("jira/license-banner");
+        licenseBanner.showLicenseBanner("");
+        licenseBanner.showLicenseFlag("");
+    });
+</script>
+
+
+
+
+
+
+
+        
+
+
+
+        
+<nav class="aui-header aui-dropdown2-trigger-group" role="navigation"><div class="aui-header-inner"><div class="aui-header-before"><a class=" aui-dropdown2-trigger app-switcher-trigger" aria-owns="app-switcher" aria-controls="app-switcher" aria-haspopup="true" data-aui-trigger href="#app-switcher"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">Linked Applications</span></a><div id="app-switcher" class="aui-dropdown2 aui-style-default"><div class="app-switcher-loading">Loading&hellip;</div></div><script>
+            (function (NL) {
+                var initialise = function () {
+                    // For some milestones of AUI, the atlassian soy namespace was renamed to aui. Handle that here by ensuring that window.atlassian is defined.
+                    window.atlassian = window.atlassian || window.aui;
+                    new NL.AppSwitcher({
+                        dropdownContents: '#app-switcher'
+                    });
+                };
+                if (NL.AppSwitcher) {
+                    initialise();
+                } else {
+                    NL.onInit = initialise;
+                }
+            }(window.NL = (window.NL || {})));
+            window.NL.environment = {isUserAdmin: false, isAppSuggestionAvailable: false};</script></div><div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-custom"><a href="https://issue-management.iontrading.com/secure/MyJiraHome.jspa"><img src="/s/en_GB-61we5k/64029/81/_/jira-logo-scaled.png" alt="ION Trading Issue Management" /></a></h1><ul class='aui-nav'>
+
+
+
+
+<li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger "href="/secure/Dashboard.jspa" id="home_link"  accessKey="d"  title="View and manage your dashboards"  aria-haspopup="true" aria-owns="home_link-content">Dashboards</a><div id="home_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="home_link"></div></li><li><a class="aui-nav-link  "href="/secure/RapidStart.jspa" id="greenhopper_menu_no_project"  title="Manage your project with JIRA Agile" >Agile</a></li>
+</ul></div><div class="aui-header-secondary"><ul class='aui-nav'><li>
+    <form action="/secure/QuickSearch.jspa" method="get" id="quicksearch" class="aui-quicksearch dont-default-focus ajs-dirty-warning-exempt">
+        <input id="quickSearchInput" class="search" type="text" title="Search" placeholder="Search" name="searchString" accessKey="q" />
+        <input type="submit" class="hidden" value="Search">
     </form>
-  </div>
+</li>
+
+
+
+    <li id="system-help-menu">
+        <a class="aui-nav-link aui-dropdown2-trigger" id="help_menu" aria-haspopup="true" aria-owns="system-help-menu-content" href="https://docs.atlassian.com/jira/docs-064/JIRA+Documentation"  target="$textUtils.htmlEncode($rootHelpMenuItem.params.target)"  title="Help"><span class="aui-icon aui-icon-small aui-iconfont-help">Help</span></a>
+        <div id="system-help-menu-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                                <ul id="jira-help" class="aui-list-truncate">
+                                                            <li>
+                                    <a  id="view_help"   class=""  title="Goto the online documentation for JIRA" href="https://docs.atlassian.com/jira/docs-064/JIRA+Documentation"  target="_blank" >Online Help</a>
+                                </li>
+                                                            <li>
+                                    <a  id="gh_view_help"   class=""  title="Get help online for JIRA Agile" href="http://docs.atlassian.com/agile/docs-067/JIRA+Agile+Documentation"  target="_blank" >JIRA Agile Help</a>
+                                </li>
+                                                            <li>
+                                    <a  id="keyshortscuthelp"   class=""  title="Get more information about JIRA's Keyboard Shortcuts" href="/secure/ViewKeyboardShortcuts!default.jspa"  target="_blank" >Keyboard Shortcuts</a>
+                                </li>
+                                                            <li>
+                                    <a  id="view_about"   class=""  title="Get more information about JIRA" href="/secure/AboutPage.jspa" >About JIRA</a>
+                                </li>
+                                                            <li>
+                                    <a  id="view_credits"   class=""  title="See who did what" href="/secure/JiraCreditsPage!default.jspa"  target="_blank" >JIRA Credits</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+                    </div>
+    </li>
+
+
+
+
+
+
+
+
+
+<li id="user-options">
+            <a class="aui-nav-link login-link" href="/login.jsp?os_destination=%2Fsecure%2FDashboard.jspa">Log In</a>
+                <div id="user-options-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                        </div>
+                    </div>
+    </li>
+</ul></div></div><!-- .aui-header-inner--></nav><!-- .aui-header -->
+    </header>
+    
+
+
+<div id="announcement-banner" class="alertHeader">
+    <!-- div style="text-align: center;font-size:13px;width:100%;border: thin solid #FF0000;color:#FF0000;background-color:#FFF;font-weight:bold">PLEASE NOTE: This Jira instance is scheduled for technical maintenance on Sunday, July 21st at 10:30 AM Europe/London Time for approximately 6 hours. Thank-you for your co-operation.</div --!>
+</div>
+
+
+    <section id="content" role="main">
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+        AG.DashboardManager.setup({
+            params: {
+                "editLayout" : "Choose dashboard layout",
+                "move" : "move",
+                "layoutAction" : "https:\/\/issue-management.iontrading.com\/rest\/dashboards\/1.0\/10000\/layout",
+                "preferences" : "Preferences",
+                "all" : "All",
+                "edit" : "Edit",
+                "remove" : "Delete",
+                "removing" : "Removing...",
+                "adding" : "Adding...",
+                "gadget" : "gadget?",
+                "add" : "Add",
+                "save" : "Save",
+                "cancel" : "Cancel",
+                "close" : "Close",
+                "expand" : "Expand",
+                "minimize" : "Minimise",
+                "canAddExternalGadgetsToDirectory" : "false",
+                "writable" : false,
+                "maxGadgets" : "20",
+                "dashboardUrl" : "https:\/\/issue-management.iontrading.com\/rest\/dashboards\/1.0\/10000",
+                "dashboardDirectoryResourceUrl" : "https:\/\/issue-management.iontrading.com\/rest\/config\/1.0\/directory",
+                "dashboardResourceUrl" : "https:\/\/issue-management.iontrading.com\/rest\/dashboards\/1.0\/10000",
+                "dashboardDirectoryUrl" : "https:\/\/issue-management.iontrading.com\/rest\/dashboards\/1.0\/\/directory\/10000",
+                "dashboardDirectoryBaseUrl" : "https:\/\/issue-management.iontrading.com\/",
+                "dashboardDiagnosticsUrl" : "\/plugins\/servlet\/gadgets\/dashboard-diagnostics",
+                "color1" : "Color 1",
+                "color2" : "Color 2",
+                "color3" : "Color 3",
+                "color4" : "Color 4",
+                "color5" : "Color 5",
+                "color6" : "Color 6",
+                "color7" : "Color 7",
+                "color8" : "Color 8",
+                "errorGadgetUrl" : "https:\/\/issue-management.iontrading.com\/plugins\/servlet\/gadgets\/error\/spec-not-found",
+                "securityTokensUrl" : "https:\/\/issue-management.iontrading.com\/plugins\/servlet\/gadgets\/security-tokens",
+                "gadgetDirectoryAdminUrl" : "https:\/\/issue-management.iontrading.com\/plugins\/servlet\/gadgets\/admin"
+            },
+            menu: {items: [
+                                                                    {
+                        id: "dashboard-tools-dropdown",
+                        trigger: {
+                            text: "Tools",
+                            styleClass: "aui-dd-link lnk icon-tools"
+                        },
+                        useTemplate: "dropdown",
+                        list: {
+                            items: [
+                                                                                                        {
+                                                                                styleClass: "dropdown-item groupmarker",
+                                                                                link: {
+                                                                                        id: "wallboard_link",
+                                                                                                                                    styleClass: "item-link groupmarker",
+                                                                                        href: "https:\/\/issue-management.iontrading.com\/plugins\/servlet\/Wallboard\/?dashboardId=10000",
+                                            text: "View as Wallboard"
+                                        }
+                                    }
+                                                            ]
+                        }
+                    },
+                                {
+                    styleClass: "hidden",
+                    link: {
+                        id: "disabled-menu-link",
+                        styleClass: "lnk icon-restore minimize",
+                        href: "#",
+                        text: "Restore"
+                    }
+                }
+            ]},
+            layouts: [
+                                                                                                                                        {"layout":"AA","id":"10000","title":"System Dashboard","gadgets":[{"hasNonHiddenUserPrefs":false,"color":"color1","column":0,"colorUrl":"https:\/\/issue-management.iontrading.com\/rest\/dashboards\/1.0\/10000\/gadget\/10000\/color","title":"Introduction","userPrefs":{"action":"https:\/\/issue-management.iontrading.com\/rest\/dashboards\/1.0\/10000\/gadget\/10000\/prefs","fields":[]},"loaded":true,"gadgetUrl":"https:\/\/issue-management.iontrading.com\/rest\/dashboards\/1.0\/10000\/gadget\/10000","width":0,"isMaximizable":false,"id":"10000","configurable":false,"height":100,"inlineHtml":"\u003cdiv class=\"g-intro\">\u003cdiv class=\"intro\">\u003cimg class=\"intro-logo\" src=\"\/images\/64jira.png\"\/>\u003ch3>Welcome to ION Trading Issue Management\u003c\/h3>\u003cp>New to JIRA? Check out the \u003ca id=\"user-docs\" href=\"https:\/\/docs.atlassian.com\/jira\/docs-064\/JIRA+User&#39;s+Guide\" alt=\"null\" title=\"JIRA User&#39;s Guide\">JIRA User\'s Guide\u003c\/a>.\u003c\/p>\u003c\/div>\u003c\/div>"},{"hasNonHiddenUserPrefs":false,"color":"color1","column":1,"colorUrl":"https:\/\/issue-management.iontrading.com\/rest\/dashboards\/1.0\/10000\/gadget\/0\/color","amdModule":"jira-dashboard-items\/login","title":"Login","userPrefs":{"action":"https:\/\/issue-management.iontrading.com\/rest\/dashboards\/1.0\/10000\/gadget\/0\/prefs","fields":[{"displayName":"isElevatedSecurityCheckShown","name":"isElevatedSecurityCheckShown","type":"hidden","value":"false","required":false},{"displayName":"isAdminFormOn","name":"isAdminFormOn","type":"hidden","value":"false","required":false},{"displayName":"loginFailedByPermissions","name":"loginFailedByPermissions","type":"hidden","value":"false","required":false},{"displayName":"externalUserManagement","name":"externalUserManagement","type":"hidden","value":"false","required":false},{"displayName":"isPublicMode","name":"isPublicMode","type":"hidden","value":"false","required":false},{"displayName":"allowCookies","name":"allowCookies","type":"hidden","value":"true","required":false},{"displayName":"captchaFailure","name":"captchaFailure","type":"hidden","value":"false","required":false},{"displayName":"loginSucceeded","name":"loginSucceeded","type":"hidden","value":"false","required":false},{"displayName":"externalPasswordManagement","name":"externalPasswordManagement","type":"hidden","value":"","required":false}]},"loaded":true,"gadgetUrl":"https:\/\/issue-management.iontrading.com\/rest\/dashboards\/1.0\/10000\/gadget\/0","width":0,"isMaximizable":false,"id":"0","configurable":false,"height":100,"inlineHtml":"\u003cdiv id=\"login-container\" class=\"\">\u003cform id=\"loginform\" method=\"post\" action=\"#\" name=\"loginform\" class=\"aui gdt\">\u003cdiv class=\"field-group\">\u003clabel accesskey=\"u\" for=\"login-form-username\" id=\"usernamelabel\">\u003cu>U\u003c\/u>sername\u003c\/label>\u003cinput class=\"text medium-field\" id=\"login-form-username\" name=\"os_username\" type=\"text\">\u003c\/div>\u003cdiv class=\"field-group\">\u003clabel accesskey=\"p\" for=\"login-form-password\" id=\"passwordlabel\">\u003cu>P\u003c\/u>assword\u003c\/label>\u003cinput class=\"text medium-field\" id=\"login-form-password\" name=\"os_password\" type=\"password\">\u003c\/div>\u003cfieldset class=\"group\">\u003cdiv class=\"checkbox\" id=\"rememberme\">\u003cinput class=\"checkbox\" id=\"login-form-remember-me\" name=\"os_cookie\" type=\"checkbox\" value=\"true\">\u003clabel accesskey=\"r\" for=\"login-form-remember-me\" id=\"remembermelabel\">\u003cu>R\u003c\/u>emember my login on this computer\u003c\/label>\u003c\/div>\u003c\/fieldset>\u003cdiv class=\"field-group\" id=\"publicmodeooff\">\u003cdiv id=\"publicmodeoffmsg\">Not a member? To request an account, please contact your \u003ca id=\"contact-admin\" href=\"\/secure\/ContactAdministrators!default.jspa\">JIRA administrators\u003c\/a>.\u003c\/div>\u003c\/div>\u003cdiv class=\"buttons-container\">\u003cdiv class=\"buttons\">\u003cinput class=\"button\" id=\"login\" name=\"login\" type=\"submit\" value=\"Log In\">\u003ca class=\"cancel\" href=\"\/secure\/ForgotLoginDetails.jspa\" id=\"forgotpassword\" target=\"_parent\">Can&#39;t access your account?\u003c\/a>\u003c\/div>\u003c\/div>\u003c\/form>\u003c\/div>"}],"writable":false}
+                                                                        ]
+        });
+</script>
+
+<noscript><h1>Warning: either you have JavaScript disabled or your browser does not support JavaScript. To work properly, this page requires JavaScript to be enabled.</h1></noscript>
+<div id="diagnostic-warning" class="hidden"></div>
+<div id="dashboard" class="dashboard  initializing"></div>
+
+<div id="i18n-settings">
+    <input class="locale-lang" type="hidden" value="en">
+    <input class="locale-country" type="hidden" value="GB">
+</div>
+
+
+    </section>
+    <footer id="footer" role="contentinfo">
+        
+
+<section class="footer-body">
+
+
+
+<ul class="atlassian-footer">
+    <li>
+        Atlassian JIRA <a class="seo-link" href="https://www.atlassian.com/software/jira">Project Management Software</a>
+
+                                    
+                        
+        <span id="footer-build-information">(v6.4.14#64029-<span title='ae256fe0fbb912241490ff1cecfb323ea0905ca5' data-commit-id='ae256fe0fbb912241490ff1cecfb323ea0905ca5}'>sha1:ae256fe</span>)</span>
+    </li>
+    <li>
+        <a id="about-link" href="/secure/AboutPage.jspa">About JIRA</a>
+    </li>
+    <li>
+                        <a id="footer-report-problem-link" href="/secure/CreateIssue!default.jspa">Report a problem</a>
+    </li>
+</ul>
+
+<form id="jira_request_timing_info" class="dont-default-focus" >
+	<fieldset class="parameters hidden">
+		<input type="hidden" title="jira.request.start.millis" value="1726902185589" />
+		<input type="hidden" title="jira.request.server.time" value="36" />
+		<input type="hidden" title="jira.request.id" value="483x1415357x1" />
+		<input type="hidden" title="jira.session.expiry.time" value="1726902244108" />
+		<input type="hidden" title="jira.session.expiry.in.mins" value="0" />
+		<input id="jiraConcurrentRequests" type="hidden" name="jira.request.concurrent.requests" value="1" />
+	</fieldset>
+</form>
+<!--
+	                 REQUEST ID : 483x1415357x1
+	          REQUEST TIMESTAMP : [21/Sep/2024:08:03:05 +0100]
+	               REQUEST TIME : 0.0360
+	                 ASESSIONID : z9if6v
+	        CONCURRENT REQUESTS : 1
+
+-->
+    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+</section>
+
+
+
+
+
+
+
+
+
+<fieldset class="hidden parameters">
+    <input type="hidden" title="loggedInUser" value="">
+    <input type="hidden" title="ajaxTimeout" value="The call to the JIRA server did not complete within the timeout period.  We are unsure of the result of this operation.">
+    <input type="hidden" title="JiraVersion" value="6.4.14" />
+    <input type="hidden" title="ajaxUnauthorised" value="You are not authorised to perform this operation. Please log in.">
+    <input type="hidden" title="baseURL" value="https://issue-management.iontrading.com:443">
+    <input type="hidden" title="ajaxCommsError" value="The JIRA server could not be contacted. This may be a temporary glitch or the server may be down.">
+    <input type="hidden" title="ajaxServerError" value="The JIRA server was contacted but has returned an error response. We are unsure of the result of this operation.">
+    <input type="hidden" title="ajaxErrorCloseDialog" value="Close this dialog and press refresh in your browser">
+    <input type="hidden" title="ajaxErrorDialogHeading" value="Communications Breakdown">
+
+    <input type="hidden" title="dirtyMessage" value="You have entered new data on this page. If you navigate away from this page without first saving your data, the changes will be lost.">
+    <input type="hidden" title="dirtyDialogMessage" value="You have entered new data in this dialog. If you navigate away from this dialog without first saving your data, the changes will be lost. Click cancel to return to the dialog.">
+    <input type="hidden" title="keyType" value="Type">
+    <input type="hidden" title="keyThen" value="then">
+    <input type="hidden" title="dblClickToExpand" value="Double click to expand">
+    <input type="hidden" title="actions" value="Actions">
+    <input type="hidden" title="removeItem" value="Remove">
+    <input type="hidden" title="workflow" value="Workflow">
+    <input type="hidden" title="labelNew" value="New Label">
+    <input type="hidden" title="issueActionsHint" value="Begin typing for available operations or press down to see all">
+    <input type="hidden" title="closelink" value="Close">
+    <input type="hidden" title="dotOperations" value="Operations">
+    <input type="hidden" title="dotLoading" value="Loading...">
+    <input type="hidden" title="frotherSuggestions" value="Suggestions">
+    <input type="hidden" title="frotherNomatches" value="No Matches">
+    <input type="hidden" title="multiselectVersionsError" value="{0} is not a valid version.">
+    <input type="hidden" title="multiselectComponentsError" value="{0} is not a valid component.">
+    <input type="hidden" title="multiselectGenericError" value="The value {0} is invalid.">
+</fieldset>
+
+    </footer>
+</div>
 </body>
 </html>
